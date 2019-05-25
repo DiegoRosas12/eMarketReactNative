@@ -12,6 +12,8 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+import TopBar from '../components/TopBar';
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -21,6 +23,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <TopBar></TopBar>
           <View style={styles.welcomeContainer}>
             <Image
               source={
@@ -111,7 +114,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 15,
   },
   welcomeContainer: {
     alignItems: 'center',
