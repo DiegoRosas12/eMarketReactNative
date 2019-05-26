@@ -13,6 +13,7 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
 import TopBar from '../components/TopBar';
+import Product from '../components/Product';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -24,6 +25,7 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <TopBar></TopBar>
+        <Product></Product>
           <View style={styles.welcomeContainer}>
             <Image
               source={

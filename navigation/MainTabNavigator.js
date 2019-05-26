@@ -4,8 +4,9 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import PedidosScreen from '../screens/PedidosScreen';
+import CarritoScreen from '../screens/CarritoScreen';
+import CuentaScreen from '../screens/CuentaScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -19,42 +20,57 @@ HomeStack.navigationOptions = {
       name={
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          : 'md-home'
       }
     />
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const PedidosStack = createStackNavigator({
+  Pedidos: PedidosScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+PedidosStack.navigationOptions = {
+  tabBarLabel: 'Pedidos',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name={Platform.OS === 'ios' ? 'ios-list' : 'md-list'}
     />
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const CarritoStack = createStackNavigator({
+  Carrito: CarritoScreen,
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+CarritoStack.navigationOptions = {
+  tabBarLabel: 'Carrito',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name={Platform.OS === 'ios' ? 'ios-options' : 'md-cart'}
+    />
+  ),
+};
+
+const CuentaStack = createStackNavigator({
+  Cuenta: CuentaScreen,
+});
+
+CuentaStack.navigationOptions = {
+  tabBarLabel: 'Cuenta',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-options' : 'md-person'}
     />
   ),
 };
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  PedidosStack,
+  CarritoStack,
+  CuentaStack,
 });

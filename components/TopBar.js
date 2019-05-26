@@ -26,10 +26,12 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     borderBottomColor: '#707070',
     borderBottomWidth: 1,
-    shadowColor: '#707070'
+    shadowColor :'black',
+    shadowOpacity: 1,
+    shadowOffset: {  width: 10,  height: 10,  }
   },
   logo: {
-    height: 60,
-    width: 80
+    height: 50,
+    width: 60
   }
 })
