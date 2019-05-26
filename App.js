@@ -2,6 +2,8 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import TopBar from './components/TopBar';
+
 
 export default class App extends React.Component {
   state = {
@@ -20,7 +22,11 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          {Platform.OS === 'ios' && <StatusBar backgroundColor="black" barStyle="light-content" />}
+          <StatusBar backgroundColor="black" barStyle="dark-content"/>
+          <View style={styles.topBar}>
+            <TopBar/>
+          </View>        
           <AppNavigator />
         </View>
       );
@@ -58,5 +64,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  topBar: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 90
   },
 });

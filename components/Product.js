@@ -11,7 +11,7 @@ export default class Product extends React.Component {
     render (){
         return(
             <View style={styles.container}>
-                <Image style={styles.image} source={require('../assets/images/robot-dev.png')}/>
+                <Image style={styles.image} source={require('../assets/images/ps4.png')}/>
                 <Text>{this.state.title}</Text>
                 <Text>{this.state.precio}</Text>
             </View>
@@ -24,8 +24,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        width: 90,
-        height: 90,
+        width: 120,
+        height: 120,
+        margin: 20,
+        backgroundColor: '#fff',
         borderColor: 'gray',
         borderRadius: 10,
         borderWidth: 1
@@ -35,11 +37,11 @@ const styles = StyleSheet.create({
         fontSize: 24
     },
     price: {
-        color: 'gray',
+        color: '#707070',
         fontSize: 14
     },
     image: {
-        width: 30,
-        height: 30
+        width: 70,
+        height: 70
     }
 })
