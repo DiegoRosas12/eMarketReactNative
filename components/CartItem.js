@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Image, Text} from 'react-native';
 
 
-export default class Product extends React.Component {
+export default class CartItem extends React.Component {
     state = {
         title: "Ps4",
         imagen: "../assets/images/robot-dev.png",
@@ -13,8 +13,10 @@ export default class Product extends React.Component {
         return(
             <View style={styles.container}>
                 <Image style={styles.image} source={require('../assets/images/ps4.png')}/>
-                <Text>{this.props.title}</Text>
-                <Text>{this.props.price}</Text>
+                <View style={styles.box}>
+                    <Text>{this.props.title}</Text>
+                    <Text>{this.props.price}</Text>
+                </View>
             </View>
         );
     }
@@ -23,15 +25,17 @@ export default class Product extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 120,
-        height: 120,
-        margin: 20,
+        height: 50,
         backgroundColor: '#fff',
         borderColor: 'gray',
         borderRadius: 10,
-        borderWidth: 1
+        borderWidth: 1,
+        marginTop: 15,
+        marginBottom: 15,
+    },
+    box: {
+        left: 30,
+        height: 80,
     },
     title: {
         color: 'black',

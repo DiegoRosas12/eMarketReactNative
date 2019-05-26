@@ -29,11 +29,11 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.scroll} contentContainerStyle={styles.contentContainer}>
           
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
+          <Product price={39.5} title={'Android'}/>
+          <Product price={34.5} title={'Ps4'}/>
+          <Product price={34.5} title={'Ps4'}/>
+          <Product price={34.5} title={'Ps4'}/>
+          <Product price={34.5} title={'Ps4'}/>
 
         </ScrollView>
       </View>
@@ -46,16 +46,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#C1C1C115',
   },
-  topBar: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 90
-  },
   scroll: {
     flex: 1,
+    backgroundColor: '#ECECEC',
     marginTop: 90
+  },
+  product: {
+    flex: 0,
   },
   contentContainer: {
     paddingTop: 0,
