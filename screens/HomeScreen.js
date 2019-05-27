@@ -83,11 +83,11 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#C1C1C115',
+    backgroundColor: '#F1F1F1',
   },
   scroll: {
     flex: 1,
-    backgroundColor: '#ECECEC',
+    backgroundColor: '#F1F1F1',
     marginTop: 90
   },
   product: {

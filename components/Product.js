@@ -20,7 +20,7 @@ export default class Product extends React.Component {
         return (
           <View style={styles.producto}>
             <Modal
-              animationType="slide"
+              animationType="fade"
               transparent={false}
               visible={this.state.modal}
               onRequestClose={() => {

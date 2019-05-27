@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import PedidosScreen from '../screens/PedidosScreen';
+import ComprasScreen from '../screens/ComprasScreen';
 import CarritoScreen from '../screens/CarritoScreen';
 import CuentaScreen from '../screens/CuentaScreen';
 
@@ -26,12 +26,12 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const PedidosStack = createStackNavigator({
-  Pedidos: PedidosScreen,
+const ComprasStack = createStackNavigator({
+  Compras: ComprasScreen,
 });
 
-PedidosStack.navigationOptions = {
-  tabBarLabel: 'Pedidos',
+ComprasStack.navigationOptions = {
+  tabBarLabel: 'Compras',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -70,7 +70,7 @@ CuentaStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  PedidosStack,
+  ComprasStack,
   CarritoStack,
   CuentaStack,
 });
