@@ -1,14 +1,34 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, AsyncStorage } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import TopBar from './components/TopBar';
 
 
 export default class App extends React.Component {
-  state = {
-    isLoadingComplete: false,
-  };
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoadingComplete: false,
+      user: "",
+      password: "",
+    };
+    this.getUserPassword();
+  }
+
+  getUserPassword = async () => {
+    const user = await AsyncStorage.getItem("user");
+    const password = await AsyncStorage.getItem("password");
+    this.setState({
+      user: {user},
+      password: {password}
+    });
+  }
+  saveUserPassword = async () => {
+    await AsyncStorage.setItem("user", this.state.user);
+    await AsyncStorage.setItem("password", this.state.password);
+  }
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {

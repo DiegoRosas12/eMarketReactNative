@@ -4,6 +4,9 @@ import { Icon } from 'react-native-elements'
 
 
 export default class Product extends React.Component {
+
+  //Props ---> Producto_id
+  //fetch ---> producto_id detail
     state = {
         title: "PlayStation 4",
         imagen: "../assets/images/robot-dev.png",
@@ -29,134 +32,145 @@ export default class Product extends React.Component {
             >
               <View style={styles.contenedorModal}>
                 <View style={styles.icon}>
-                  <Icon name="keyboard-arrow-left" size={50}  onPress={() => {
-                this.setModalVisible(!this.state.modal)}}/>
+                  <Icon
+                    name="keyboard-arrow-left"
+                    size={50}
+                    onPress={() => {
+                      this.setModalVisible(!this.state.modal);
+                    }}
+                  />
                 </View>
-                <View style={styles.Modal}> 
-                <Image
-                  style={styles.imageModal}
-                  source={require("../assets/images/ps4.png")}
-                />
-                {/* <View> */}
-                <View style={styles.contenido}>
-                  <Text style={styles.title}>{this.state.title}</Text>
-                  <Text style={styles.precio}>
-                    $ {this.props.price}
-                  </Text>
-                  <ScrollView>
-                    <Text style={styles.descripcion}>
-                      Deleniti officia ut nam. Est itaque minus nostrum
-                      aspernatur. Repellendus sit consequuntur quasi
-                      aliquam nesciunt. Voluptatibus impedit autem
-                      cupiditate. Ut quis facere itaque vel quos
-                      corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                      est omnis nostrum. Eos doloremque non quae fuga
-                      eveniet vel quasi aperiam. Voluptas debitis quo
-                      debitis est iste qui aut sed. Dignissimos quas vel
-                      doloribus deleniti quos cupiditate vel officia.
-                      Deleniti officia ut nam. Est itaque minus nostrum
-                      aspernatur. Repellendus sit consequuntur quasi
-                      aliquam nesciunt. Voluptatibus impedit autem
-                      cupiditate. Ut quis facere itaque vel quos
-                      corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                      est omnis nostrum. Eos doloremque non quae fuga
-                      eveniet vel quasi aperiam. Voluptas debitis quo
-                      debitis est iste qui aut sed. Dignissimos quas vel
-                      doloribus deleniti quos cupiditate vel officia.
-                      Deleniti officia ut nam. Est itaque minus nostrum
-                      aspernatur. Repellendus sit consequuntur quasi
-                      aliquam nesciunt. Voluptatibus impedit autem
-                      cupiditate. Ut quis facere itaque vel quos
-                      corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                      est omnis nostrum. Eos doloremque non quae fuga
-                      eveniet vel quasi aperiam. Voluptas debitis quo
-                      debitis est iste qui aut sed. Dignissimos quas vel
-                      doloribus deleniti quos cupiditate vel officia.
-                      Deleniti officia ut nam. Est itaque minus nostrum
-                      aspernatur. Repellendus sit consequuntur quasi
-                      aliquam nesciunt. Voluptatibus impedit autem
-                      cupiditate. Ut quis facere itaque vel quos
-                      corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                      est omnis nostrum. Eos doloremque non quae fuga
-                      eveniet vel quasi aperiam. Voluptas debitis quo
-                      debitis est iste qui aut sed. Dignissimos quas vel
-                      doloribus deleniti quos cupiditate vel officia.
-                      Deleniti officia ut nam. Est itaque minus nostrum
-                      aspernatur. Repellendus sit consequuntur quasi
-                      aliquam nesciunt. Voluptatibus impedit autem
-                      cupiditate. Ut quis facere itaque vel quos
-                      corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                      est omnis nostrum. Eos doloremque non quae fuga
-                      eveniet vel quasi aperiam. Voluptas debitis quo
-                      debitis est iste qui aut sed. Dignissimos quas vel
-                      doloribus deleniti quos cupiditate vel officia.
-                      Deleniti officia ut nam. Est itaque minus nostrum
-                      aspernatur. Repellendus sit consequuntur quasi
-                      aliquam nesciunt. Voluptatibus impedit autem
-                      cupiditate. Ut quis facere itaque vel quos
-                      corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                      est omnis nostrum. Eos doloremque non quae fuga
-                      eveniet vel quasi aperiam. Voluptas debitis quo
-                      debitis est iste qui aut sed. Dignissimos quas vel
-                      doloribus deleniti quos cupiditate vel officia.
-                      Deleniti officia ut nam. Est itaque minus nostrum
-                      aspernatur. Repellendus sit consequuntur quasi
-                      aliquam nesciunt. Voluptatibus impedit autem
-                      cupiditate. Ut quis facere itaque vel quos
-                      corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                      est omnis nostrum. Eos doloremque non quae fuga
-                      eveniet vel quasi aperiam. Voluptas debitis quo
-                      debitis est iste qui aut sed. Dignissimos quas vel
-                      doloribus deleniti quos cupiditate vel officia.
-                      Deleniti officia ut nam. Est itaque minus nostrum
-                      aspernatur. Repellendus sit consequuntur quasi
-                      aliquam nesciunt. Voluptatibus impedit autem
-                      cupiditate. Ut quis facere itaque vel quos
-                      corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                      est omnis nostrum. Eos doloremque non quae fuga
-                      eveniet vel quasi aperiam. Voluptas debitis quo
-                      debitis est iste qui aut sed. Dignissimos quas vel
-                      doloribus deleniti quos cupiditate vel officia.
+                <View style={styles.Modal}>
+                  <Image
+                    style={styles.imageModal}
+                    source={require("../assets/images/ps4.png")}
+                  />
+                  {/* <View> */}
+                  <View style={styles.contenido}>
+                    <Text style={styles.title}>{this.state.title}</Text>
+                    <Text style={styles.precio}>
+                      $ {this.props.price}
                     </Text>
-                  </ScrollView>
-                  <View style={styles.buttons}>
-                    <TouchableHighlight
-                      style={styles.kart}
-                      onPress={() => {
-                        alert("Kart");
-                      }}
-                    >
-                      <Text style={{ color: "#07BA00", fontSize: 17 }}>
-                        Add to Kart
+                    <ScrollView>
+                      <Text style={styles.descripcion}>
+                        Deleniti officia ut nam. Est itaque minus
+                        nostrum aspernatur. Repellendus sit consequuntur
+                        quasi aliquam nesciunt. Voluptatibus impedit
+                        autem cupiditate. Ut quis facere itaque vel quos
+                        corporis vitae. Ab ut saepe magnam nulla quo. Ut
+                        est omnis nostrum. Eos doloremque non quae fuga
+                        eveniet vel quasi aperiam. Voluptas debitis quo
+                        debitis est iste qui aut sed. Dignissimos quas
+                        vel doloribus deleniti quos cupiditate vel
+                        officia. Deleniti officia ut nam. Est itaque
+                        minus nostrum aspernatur. Repellendus sit
+                        consequuntur quasi aliquam nesciunt.
+                        Voluptatibus impedit autem cupiditate. Ut quis
+                        facere itaque vel quos corporis vitae. Ab ut
+                        saepe magnam nulla quo. Ut est omnis nostrum.
+                        Eos doloremque non quae fuga eveniet vel quasi
+                        aperiam. Voluptas debitis quo debitis est iste
+                        qui aut sed. Dignissimos quas vel doloribus
+                        deleniti quos cupiditate vel officia. Deleniti
+                        officia ut nam. Est itaque minus nostrum
+                        aspernatur. Repellendus sit consequuntur quasi
+                        aliquam nesciunt. Voluptatibus impedit autem
+                        cupiditate. Ut quis facere itaque vel quos
+                        corporis vitae. Ab ut saepe magnam nulla quo. Ut
+                        est omnis nostrum. Eos doloremque non quae fuga
+                        eveniet vel quasi aperiam. Voluptas debitis quo
+                        debitis est iste qui aut sed. Dignissimos quas
+                        vel doloribus deleniti quos cupiditate vel
+                        officia. Deleniti officia ut nam. Est itaque
+                        minus nostrum aspernatur. Repellendus sit
+                        consequuntur quasi aliquam nesciunt.
+                        Voluptatibus impedit autem cupiditate. Ut quis
+                        facere itaque vel quos corporis vitae. Ab ut
+                        saepe magnam nulla quo. Ut est omnis nostrum.
+                        Eos doloremque non quae fuga eveniet vel quasi
+                        aperiam. Voluptas debitis quo debitis est iste
+                        qui aut sed. Dignissimos quas vel doloribus
+                        deleniti quos cupiditate vel officia. Deleniti
+                        officia ut nam. Est itaque minus nostrum
+                        aspernatur. Repellendus sit consequuntur quasi
+                        aliquam nesciunt. Voluptatibus impedit autem
+                        cupiditate. Ut quis facere itaque vel quos
+                        corporis vitae. Ab ut saepe magnam nulla quo. Ut
+                        est omnis nostrum. Eos doloremque non quae fuga
+                        eveniet vel quasi aperiam. Voluptas debitis quo
+                        debitis est iste qui aut sed. Dignissimos quas
+                        vel doloribus deleniti quos cupiditate vel
+                        officia. Deleniti officia ut nam. Est itaque
+                        minus nostrum aspernatur. Repellendus sit
+                        consequuntur quasi aliquam nesciunt.
+                        Voluptatibus impedit autem cupiditate. Ut quis
+                        facere itaque vel quos corporis vitae. Ab ut
+                        saepe magnam nulla quo. Ut est omnis nostrum.
+                        Eos doloremque non quae fuga eveniet vel quasi
+                        aperiam. Voluptas debitis quo debitis est iste
+                        qui aut sed. Dignissimos quas vel doloribus
+                        deleniti quos cupiditate vel officia. Deleniti
+                        officia ut nam. Est itaque minus nostrum
+                        aspernatur. Repellendus sit consequuntur quasi
+                        aliquam nesciunt. Voluptatibus impedit autem
+                        cupiditate. Ut quis facere itaque vel quos
+                        corporis vitae. Ab ut saepe magnam nulla quo. Ut
+                        est omnis nostrum. Eos doloremque non quae fuga
+                        eveniet vel quasi aperiam. Voluptas debitis quo
+                        debitis est iste qui aut sed. Dignissimos quas
+                        vel doloribus deleniti quos cupiditate vel
+                        officia. Deleniti officia ut nam. Est itaque
+                        minus nostrum aspernatur. Repellendus sit
+                        consequuntur quasi aliquam nesciunt.
+                        Voluptatibus impedit autem cupiditate. Ut quis
+                        facere itaque vel quos corporis vitae. Ab ut
+                        saepe magnam nulla quo. Ut est omnis nostrum.
+                        Eos doloremque non quae fuga eveniet vel quasi
+                        aperiam. Voluptas debitis quo debitis est iste
+                        qui aut sed. Dignissimos quas vel doloribus
+                        deleniti quos cupiditate vel officia.
                       </Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                      style={styles.buy}
-                      onPress={() => {
-                        alert("Buy");
-                      }}
-                    >
-                      <Text
-                        style={{
-                          color: "white",
-                          fontSize: 17,
-                          textAlign: "center"
+                    </ScrollView>
+                    <View style={styles.buttons}>
+                      <TouchableHighlight
+                        style={styles.kart}
+                        onPress={() => {
+                          alert("Kart");
                         }}
                       >
-                        Buy
-                      </Text>
-                    </TouchableHighlight>
+                        <Text
+                          style={{ color: "#07BA00", fontSize: 17 }}
+                        >
+                          Add to Kart
+                        </Text>
+                      </TouchableHighlight>
+                      <TouchableHighlight
+                        style={styles.buy}
+                        onPress={() => {
+                          alert("Buy");
+                        }}
+                      >
+                        <Text
+                          style={{
+                            color: "white",
+                            fontSize: 17,
+                            textAlign: "center"
+                          }}
+                        >
+                          Buy
+                        </Text>
+                      </TouchableHighlight>
+                    </View>
                   </View>
-                </View>
 
-                {/* <TouchableHighlight
+                  {/* <TouchableHighlight
                       onPress={() => {
                         this.setModalVisible(!this.state.modal);
                       }}
                     >
                       <Text>Hide Modal</Text>
                     </TouchableHighlight> */}
-                {/* </View> */}
+                  {/* </View> */}
                 </View>
               </View>
             </Modal>

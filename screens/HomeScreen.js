@@ -17,6 +17,8 @@ import TopBar from '../components/TopBar';
 import Product from '../components/Product';
 
 export default class HomeScreen extends React.Component {
+//fetch get ---> producto_id price title all vector
+//Build data vector ---> flatList
 
   state = {
     productCount: 3
@@ -24,10 +26,6 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
-
-  modal() {
-
-  }
 
   render() {
     return (
@@ -44,7 +42,7 @@ export default class HomeScreen extends React.Component {
         <View style={styles.flatlist}>
           <FlatList 
               data={[
-                {view: <Product price={39.5} title={'Android'}/> , key: '1'},
+                {view: <Product /*producto_id*/ price={39.5} title={'Android'}/> , key: '1'},
                 {view: <Product price={39.5} title={'Android'}/> , key: '2'},
                 {view: <Product price={39.5} title={'Android'}/> , key: '3'},
                 {view: <Product price={39.5} title={'Android'}/> , key: '4'},
