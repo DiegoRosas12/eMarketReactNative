@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  FlatList
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -24,10 +25,14 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
+  modal() {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.scroll} contentContainerStyle={styles.contentContainer}>
+        {/* <ScrollView style={styles.scroll} contentContainerStyle={styles.contentContainer}>
           
           <Product price={39.5} title={'Android'}/>
           <Product price={34.5} title={'Ps4'}/>
@@ -35,13 +40,47 @@ export default class HomeScreen extends React.Component {
           <Product price={34.5} title={'Ps4'}/>
           <Product price={34.5} title={'Ps4'}/>
 
-        </ScrollView>
+        </ScrollView> */}
+        <View style={styles.flatlist}>
+          <FlatList 
+              data={[
+                {view: <Product price={39.5} title={'Android'}/> , key: '1'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '2'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '3'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '4'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '5'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '6'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '7'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '8'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '9'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '10'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '11'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '12'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '13'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '14'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '15'},
+                {view: <Product price={39.5} title={'Android'}/> , key: '16'},
+              ]}
+              renderItem={({ item }) => item.view}
+              numColumns={2}
+            />
+            
+        </View>
+
+
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  flatlist: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 90
+  },
   container: {
     flex: 1,
     backgroundColor: '#C1C1C115',

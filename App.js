@@ -27,7 +27,7 @@ export default class App extends React.Component {
           <View style={styles.topBar}>
             <TopBar/>
           </View>        
-          <AppNavigator />
+          <AppNavigator style={styles.appNavigator}/>
         </View>
       );
     }
