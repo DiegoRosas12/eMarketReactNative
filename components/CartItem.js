@@ -14,8 +14,10 @@ export default class CartItem extends React.Component {
             <View style={styles.container}>
                 <Image style={styles.image} source={require('../assets/images/ps4.png')}/>
                 <View style={styles.box}>
-                    <Text>{this.props.title}</Text>
-                    <Text>{this.props.price}</Text>
+                    <Text style={styles.title} >{this.props.title}</Text>
+                    <Text style={styles.h2} >{this.props.proveedor}</Text>
+                    <Text style={styles.h2} >{this.props.precio}</Text>
+                    <Text style={styles.h2} >{this.props.cantidad}</Text>
                 </View>
             </View>
         );
@@ -25,7 +27,9 @@ export default class CartItem extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        height: 50,
+        flexDirection: 'row',
+        height: 150,
+        width: 350,
         backgroundColor: '#fff',
         borderColor: 'gray',
         borderRadius: 10,
@@ -41,12 +45,17 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 24
     },
+    h2: {
+        fontSize: 20,
+        color: 'gray'
+    },
     price: {
         color: '#707070',
         fontSize: 14
     },
     image: {
-        width: 70,
-        height: 70
+        marginLeft: 20,
+        width: 140,
+        height: 140
     }
 })
