@@ -7,6 +7,7 @@ export default class SignIn extends React.Component {
   constructor(props){
       super(props);
       this.state ={
+        username: "",
         nombre: "",
         correo: "",
         password: "",
@@ -21,13 +22,14 @@ export default class SignIn extends React.Component {
 
   submit = () => {
 
-  fetch("http://192.168.1.104:3001/users/addUser", {
+  fetch("http://192.168.1.120:3001/authentication/SignUp", {
     method: "POST",
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
+      username: this.state.username,
       nombre: this.state.nombre,
       correo: this.state.correo,
       password: this.state.password,
@@ -54,6 +56,12 @@ export default class SignIn extends React.Component {
         <Image style={styles.logo} source={require('../assets/images/logo.png')} />
         <Text style={styles.h1}>Completa tus datos</Text>
         <Text style={styles.label}>Nombre</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={(username) => this.setState({username})}
+
+        />
+        <Text style={styles.label}>Username</Text>
         <TextInput
           style={styles.input}
           onChangeText={(nombre) => this.setState({nombre})}

@@ -65,70 +65,6 @@ export default class Product extends React.Component {
                         officia. Deleniti officia ut nam. Est itaque
                         minus nostrum aspernatur. Repellendus sit
                         consequuntur quasi aliquam nesciunt.
-                        Voluptatibus impedit autem cupiditate. Ut quis
-                        facere itaque vel quos corporis vitae. Ab ut
-                        saepe magnam nulla quo. Ut est omnis nostrum.
-                        Eos doloremque non quae fuga eveniet vel quasi
-                        aperiam. Voluptas debitis quo debitis est iste
-                        qui aut sed. Dignissimos quas vel doloribus
-                        deleniti quos cupiditate vel officia. Deleniti
-                        officia ut nam. Est itaque minus nostrum
-                        aspernatur. Repellendus sit consequuntur quasi
-                        aliquam nesciunt. Voluptatibus impedit autem
-                        cupiditate. Ut quis facere itaque vel quos
-                        corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                        est omnis nostrum. Eos doloremque non quae fuga
-                        eveniet vel quasi aperiam. Voluptas debitis quo
-                        debitis est iste qui aut sed. Dignissimos quas
-                        vel doloribus deleniti quos cupiditate vel
-                        officia. Deleniti officia ut nam. Est itaque
-                        minus nostrum aspernatur. Repellendus sit
-                        consequuntur quasi aliquam nesciunt.
-                        Voluptatibus impedit autem cupiditate. Ut quis
-                        facere itaque vel quos corporis vitae. Ab ut
-                        saepe magnam nulla quo. Ut est omnis nostrum.
-                        Eos doloremque non quae fuga eveniet vel quasi
-                        aperiam. Voluptas debitis quo debitis est iste
-                        qui aut sed. Dignissimos quas vel doloribus
-                        deleniti quos cupiditate vel officia. Deleniti
-                        officia ut nam. Est itaque minus nostrum
-                        aspernatur. Repellendus sit consequuntur quasi
-                        aliquam nesciunt. Voluptatibus impedit autem
-                        cupiditate. Ut quis facere itaque vel quos
-                        corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                        est omnis nostrum. Eos doloremque non quae fuga
-                        eveniet vel quasi aperiam. Voluptas debitis quo
-                        debitis est iste qui aut sed. Dignissimos quas
-                        vel doloribus deleniti quos cupiditate vel
-                        officia. Deleniti officia ut nam. Est itaque
-                        minus nostrum aspernatur. Repellendus sit
-                        consequuntur quasi aliquam nesciunt.
-                        Voluptatibus impedit autem cupiditate. Ut quis
-                        facere itaque vel quos corporis vitae. Ab ut
-                        saepe magnam nulla quo. Ut est omnis nostrum.
-                        Eos doloremque non quae fuga eveniet vel quasi
-                        aperiam. Voluptas debitis quo debitis est iste
-                        qui aut sed. Dignissimos quas vel doloribus
-                        deleniti quos cupiditate vel officia. Deleniti
-                        officia ut nam. Est itaque minus nostrum
-                        aspernatur. Repellendus sit consequuntur quasi
-                        aliquam nesciunt. Voluptatibus impedit autem
-                        cupiditate. Ut quis facere itaque vel quos
-                        corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                        est omnis nostrum. Eos doloremque non quae fuga
-                        eveniet vel quasi aperiam. Voluptas debitis quo
-                        debitis est iste qui aut sed. Dignissimos quas
-                        vel doloribus deleniti quos cupiditate vel
-                        officia. Deleniti officia ut nam. Est itaque
-                        minus nostrum aspernatur. Repellendus sit
-                        consequuntur quasi aliquam nesciunt.
-                        Voluptatibus impedit autem cupiditate. Ut quis
-                        facere itaque vel quos corporis vitae. Ab ut
-                        saepe magnam nulla quo. Ut est omnis nostrum.
-                        Eos doloremque non quae fuga eveniet vel quasi
-                        aperiam. Voluptas debitis quo debitis est iste
-                        qui aut sed. Dignissimos quas vel doloribus
-                        deleniti quos cupiditate vel officia.
                       </Text>
                     </ScrollView>
                     <View style={styles.buttons}>
@@ -173,7 +109,7 @@ export default class Product extends React.Component {
                   {/* </View> */}
                 </View>
               </View>
-            </Modal>
+            </Modal> 
 
             <TouchableHighlight
               style={styles.container}
