@@ -13,17 +13,18 @@ export default class Product extends React.Component {
         precio: 0, 
         modal: false,
     }
-
+    
+    
     setModalVisible(visible) {
-        this.setState({modal: visible});
-      }
-
+      this.setState({modal: visible});
+    }
+    
     render (){
-        // const {price, title, image } = this.props;
-        return (
+      // const {price, title, image } = this.props;
+      return (
           <View style={styles.producto}>
             <Modal
-              animationType="fade"
+              animationType="slide"
               transparent={false}
               visible={this.state.modal}
               onRequestClose={() => {
@@ -47,24 +48,13 @@ export default class Product extends React.Component {
                   />
                   {/* <View> */}
                   <View style={styles.contenido}>
-                    <Text style={styles.title}>{this.state.title}</Text>
+                    <Text style={styles.title}>{this.props.nombre}</Text>
                     <Text style={styles.precio}>
-                      $ {this.props.price}
+                      $ {this.props.precio}
                     </Text>
                     <ScrollView>
                       <Text style={styles.descripcion}>
-                        Deleniti officia ut nam. Est itaque minus
-                        nostrum aspernatur. Repellendus sit consequuntur
-                        quasi aliquam nesciunt. Voluptatibus impedit
-                        autem cupiditate. Ut quis facere itaque vel quos
-                        corporis vitae. Ab ut saepe magnam nulla quo. Ut
-                        est omnis nostrum. Eos doloremque non quae fuga
-                        eveniet vel quasi aperiam. Voluptas debitis quo
-                        debitis est iste qui aut sed. Dignissimos quas
-                        vel doloribus deleniti quos cupiditate vel
-                        officia. Deleniti officia ut nam. Est itaque
-                        minus nostrum aspernatur. Repellendus sit
-                        consequuntur quasi aliquam nesciunt.
+                        {this.props.descripcion}
                       </Text>
                     </ScrollView>
                     <View style={styles.buttons}>
@@ -122,15 +112,17 @@ export default class Product extends React.Component {
                   style={styles.image}
                   source={require("../assets/images/ps4.png")}
                 />
-                <Text>{this.props.title}</Text>
-                <Text>{this.props.price}</Text>
+                <Text>{this.props.nombre}</Text>
+                <Text>$ {this.props.precio}</Text>
+                <Text>Existencia: {this.props.existencia}</Text>
               </View>
             </TouchableHighlight>
 
             <Button
-              title="Buy"
+              title="Comprar"
+              color='#00A210'
               onPress={() => {
-                alert("Buy");
+                alert("Comprado");
               }}
             />
           </View>

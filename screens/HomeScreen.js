@@ -21,45 +21,52 @@ export default class HomeScreen extends React.Component {
 //Build data vector ---> flatList
 
   state = {
-    productCount: 3
+    productos: []
   }
   static navigationOptions = {
     header: null,
   };
 
+  setProductos(){
+    fetch("http://192.168.1.120:3001/productos")
+      .then(response => response.json())
+      .then(productos => this.setState({productos}))
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  constructor(props){
+    super(props);
+    this.setProductos();
+  }
+
   render() {
+    var data = [];
+    this.state.productos.map(producto => (
+      data.push({
+        key: `${producto.producto_id}`, 
+        nombre: producto.nombre, 
+        precio: producto.precio,
+        descripcion: producto.descripcion,
+        existencia: producto.existencia,
+        imagen: producto.imagen
+      })
+    ));
     return (
       <View style={styles.container}>
-        {/* <ScrollView style={styles.scroll} contentContainerStyle={styles.contentContainer}>
-          
-          <Product price={39.5} title={'Android'}/>
-          <Product price={34.5} title={'Ps4'}/>
-          <Product price={34.5} title={'Ps4'}/>
-          <Product price={34.5} title={'Ps4'}/>
-          <Product price={34.5} title={'Ps4'}/>
-
-        </ScrollView> */}
         <View style={styles.flatlist}>
-          <FlatList 
-              data={[
-                {view: <Product /*producto_id*/ price={39.5} title={'Android'}/> , key: '1'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '2'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '3'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '4'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '5'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '6'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '7'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '8'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '9'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '10'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '11'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '12'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '13'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '14'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '15'},
-                {view: <Product price={39.5} title={'Android'}/> , key: '16'},
-              ]}
-              renderItem={({ item }) => item.view}
+          <FlatList
+              data={data}
+              renderItem={({ item }) => <Product 
+                producto_id={item.key} 
+                descripcion = {item.descripcion}
+                precio={item.precio} 
+                nombre={item.nombre} 
+                existencia={item.existencia} 
+                imagen={item.imagen}
+                /> 
+              }
               numColumns={2}
             />
             
