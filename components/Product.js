@@ -13,14 +13,15 @@ export default class Product extends React.Component {
         precio: 0, 
         modal: false,
     }
-
+    
+    
     setModalVisible(visible) {
-        this.setState({modal: visible});
-      }
-
+      this.setState({modal: visible});
+    }
+    
     render (){
-        // const {price, title, image } = this.props;
-        return (
+      // const {price, title, image } = this.props;
+      return (
           <View style={styles.producto}>
             <Modal
               animationType="fade"
@@ -47,7 +48,7 @@ export default class Product extends React.Component {
                   />
                   {/* <View> */}
                   <View style={styles.contenido}>
-                    <Text style={styles.title}>{this.state.title}</Text>
+                    <Text style={styles.title}>{this.props.title}</Text>
                     <Text style={styles.precio}>
                       $ {this.props.price}
                     </Text>
