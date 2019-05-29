@@ -44,14 +44,29 @@ export default class HomeScreen extends React.Component {
   render() {
     var data = [];
     this.state.productos.map(producto => (
-      data.push({key: `${producto.producto_id}`, nombre: producto.nombre, precio: producto.precio})
+      data.push({
+        key: `${producto.producto_id}`, 
+        nombre: producto.nombre, 
+        precio: producto.precio,
+        descripcion: producto.descripcion,
+        existencia: producto.existencia,
+        imagen: producto.imagen
+      })
     ));
     return (
       <View style={styles.container}>
         <View style={styles.flatlist}>
           <FlatList
               data={data}
-              renderItem={({ item }) => <Product price={item.precio} title={item.nombre} /> }
+              renderItem={({ item }) => <Product 
+                producto_id={item.key} 
+                descripcion = {item.descripcion}
+                precio={item.precio} 
+                nombre={item.nombre} 
+                existencia={item.existencia} 
+                imagen={item.imagen}
+                /> 
+              }
               numColumns={2}
             />
             
