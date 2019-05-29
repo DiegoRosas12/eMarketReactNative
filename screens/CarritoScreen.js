@@ -1,13 +1,27 @@
 import React from 'react';
 import { ExpoConfigView } from '@expo/samples';
-import {View, StyleSheet, Image, Text, ScrollView, Platform} from 'react-native';
+import {View, StyleSheet, Image, Text, ScrollView, Platform, AsyncStorage} from 'react-native';
 import CartItem from '../components/CartItem';
 
 export default class CarritoScreen extends React.Component {
   static navigationOptions = {
     title: 'app.json',
+    username: ''
   };
-
+  getLogin = async () => {
+    try {
+      const value = await AsyncStorage.getItem('user');
+      if (value !== null) {
+        // We have data!!
+        console.log(value);
+        this.setState({username: value});
+      }
+      return value;
+    } catch (error) {
+      // Error retrieving data
+      console.log(error)
+    }
+  }
   render() {
     /* Go ahead and delete ExpoConfigView and replace it with your
      * content, we just wanted to give you a quick view of your config */
@@ -15,7 +29,7 @@ export default class CarritoScreen extends React.Component {
         <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <View style={styles.cart}/>
-        <CartItem style={styles.cart} title={'Ps4'} proveedor={'Sony'} cantidad={1} precio={1800.50}/>
+        <CartItem style={styles.cart} title={this.state.username} proveedor={'Sony'} cantidad={1} precio={1800.50}/>
         <CartItem style={styles.cart} title={'Ps4'} proveedor={'Sony'} cantidad={1} precio={1800.50}/>
         <CartItem style={styles.cart} title={'Ps4'} proveedor={'Sony'} cantidad={1} precio={1800.50}/>
         <CartItem style={styles.cart} title={'Ps4'} proveedor={'Sony'} cantidad={1} precio={1800.50}/>
