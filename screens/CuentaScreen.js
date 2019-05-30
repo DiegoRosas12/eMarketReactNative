@@ -11,6 +11,7 @@ export default class PedidosScreen extends React.Component {
 
   state = {
     username : "",
+    id: 0,
     showLogIn: false,
     showSignIn: false,
   }
@@ -23,8 +24,17 @@ export default class PedidosScreen extends React.Component {
       console.log(error);
     }
   }
+  setTemporalId = async () => {
+    try {
+      await AsyncStorage.setItem('id', 1)
+      //this.setState({username: 'prueba1'})
+    } catch(error){
+      console.log(error);
+    }
+  }
   componentDidMount(){
     this.setTemporalLogin()
+    this.setTemporalId()
     this.getLogin();
   }
   getLogin = async () => {
@@ -34,6 +44,22 @@ export default class PedidosScreen extends React.Component {
         // We have data!!
         console.log(value);
         this.setState({username: value});
+      }
+      return value;
+    } catch (error) {
+      // Error retrieving data
+      console.log(error)
+    }
+    return value
+  }
+
+  getId = async () => {
+    try {
+      const value = await AsyncStorage.getItem('id');
+      if (value !== null) {
+        // We have data!!
+        console.log(value);
+        this.setState({id: value});
       }
       return value;
     } catch (error) {
