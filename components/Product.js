@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text, Alert, Button, TouchableHighlight, Modal, ScrollView} from 'react-native';
+import {View, StyleSheet, Image, Text, Alert, Button, TouchableHighlight, Modal, ScrollView, AsyncStorage} from 'react-native';
 import { Icon } from 'react-native-elements'
 
 
@@ -12,7 +12,12 @@ export default class Product extends React.Component {
         imagen: "../assets/images/robot-dev.png",
         precio: 0, 
         modal: false,
-        username: ""
+        username: "",
+        id: "",
+    }
+
+    componentDidMount(){
+      this.getId()
     }
 
     getLogin = async () => {
@@ -31,6 +36,21 @@ export default class Product extends React.Component {
       return value
     }
   
+    getId = async () => {
+      try {
+        const value = await AsyncStorage.getItem('id');
+        if (value !== null) {
+          // We have data!!
+          console.log(value);
+          this.setState({id: value});
+        }
+        return value;
+      } catch (error) {
+        // Error retrieving data
+        console.log(error)
+      }
+      return value
+    }
     
     
     setModalVisible(visible) {
@@ -46,7 +66,7 @@ export default class Product extends React.Component {
       },
     body: JSON.stringify({
       producto_id: this.props.producto_id,
-      user_id: 1,
+      user_id: parseInt(this.state.id,10),
       cantidad: 1,
     })
   })
@@ -161,7 +181,7 @@ export default class Product extends React.Component {
               title="Comprar"
               color='#00A210'
               onPress={() => {
-                alert("Comprado");
+                this.getId();
               }}
             />
           </View>

@@ -1,9 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Modal, Text, AsyncStorage } from 'react-native';
+import { ScrollView, StyleSheet, View, Modal, Text, AsyncStorage, Button } from 'react-native';
 import SignIn from './SignInScreen';
 import LogIn from './LogInScreen';
-import { Button } from 'react-native-elements';
-import MainNavigator from '../navigation/MainNavigator'
 
 export default class PedidosScreen extends React.Component {
   static navigationOptions = {
@@ -17,43 +15,43 @@ export default class PedidosScreen extends React.Component {
     showSignIn: false,
   }
 
-  setTemporalLogin = async () => {
-    try {
-      await AsyncStorage.setItem('user', 'prueba')
-      //this.setState({username: 'prueba1'})
-    } catch(error){
-      console.log(error);
-    }
-  }
-  setTemporalId = async () => {
-    try {
-      await AsyncStorage.setItem('id', '1')
-      //this.setState({username: 'prueba1'})
-    } catch(error){
-      console.log(error);
-    }
-  }
-  componentDidMount(){
-    this.setTemporalLogin()
-    this.setTemporalId()
-    this.getLogin();
-    this.getId();
-  }
-  getLogin = async () => {
-    try {
-      const value = await AsyncStorage.getItem('user');
-      if (value !== null) {
-        // We have data!!
-        console.log(value);
-        this.setState({username: value});
-      }
-      return value;
-    } catch (error) {
-      // Error retrieving data
-      console.log(error)
-    }
-    return value
-  }
+  // setTemporalLogin = async () => {
+  //   try {
+  //     await AsyncStorage.setItem('user', 'prueba')
+  //     //this.setState({username: 'prueba1'})
+  //   } catch(error){
+  //     console.log(error);
+  //   }
+  // }
+  // setTemporalId = async () => {
+  //   try {
+  //     await AsyncStorage.setItem('id', '1')
+  //     //this.setState({username: 'prueba1'})
+  //   } catch(error){
+  //     console.log(error);
+  //   }
+  // }
+  // componentDidMount(){
+  //   // this.setTemporalLogin()
+  //   this.setTemporalId()
+  //   // this.getLogin();
+  //   this.getId();
+  // }
+  // getLogin = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem('user');
+  //     if (value !== null) {
+  //       // We have data!!
+  //       console.log(value);
+  //       this.setState({username: value});
+  //     }
+  //     return value;
+  //   } catch (error) {
+  //     // Error retrieving data
+  //     console.log(error)
+  //   }
+  //   return value
+  // }
 
   getId = async () => {
     try {
@@ -73,8 +71,8 @@ export default class PedidosScreen extends React.Component {
 
   logout = async () => {
     try {
-      await AsyncStorage.setItem('user', '');
-      this.setState({username: ''});
+      await AsyncStorage.setItem('id', '');
+      this.setState({id: ''});
     } catch(error){
       console.log(error);
     }
@@ -88,8 +86,8 @@ export default class PedidosScreen extends React.Component {
     this.setState({ showLogIn: visible})    
   }
   render() {
-    const {navigate} = this.props.navigate
-    if (this.state.username){
+
+    if (this.state.id){
       return(
         <ScrollView style={styles.container} contentContainerStyle={styles.signin}>
           <Text>Perfil</Text>
@@ -121,6 +119,7 @@ export default class PedidosScreen extends React.Component {
                 this.showSignIn(!this.state.showSignIn);
               }}>
             <SignIn/>
+            
           </Modal>
           
           <Button title="iniciar sesion" color='#00A210'

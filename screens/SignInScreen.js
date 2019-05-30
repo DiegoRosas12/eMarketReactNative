@@ -47,7 +47,7 @@ export default class SignIn extends React.Component {
     throw error;
   });
 
-    alert(`Usuario Creado`);
+    alert("Usuario " + this.state.username +  " creado!");
   }
 
   
