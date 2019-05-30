@@ -58,7 +58,8 @@ export default class HomeScreen extends React.Component {
         <View style={styles.flatlist}>
           <FlatList
               data={data}
-              renderItem={({ item }) => <Product 
+              renderItem={({ item }) => 
+              <Product 
                 producto_id={item.key} 
                 descripcion = {item.descripcion}
                 precio={item.precio} 

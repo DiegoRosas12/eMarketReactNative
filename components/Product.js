@@ -18,6 +18,27 @@ export default class Product extends React.Component {
     setModalVisible(visible) {
       this.setState({modal: visible});
     }
+
+    addProduct2Kart(){
+      fetch("http://192.168.1.120:3001/carritos/addCarrito", {
+      method: "POST",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    body: JSON.stringify({
+      producto_id: this.props.producto_id,
+      user_id: 1,
+      cantidad: 1,
+    })
+  })
+  .catch(function(error) {
+    console.log(error.message);
+    throw error;
+  });
+
+      Alert.alert('Carrito', 'Producto añadido');
+    }
     
     render (){
       // const {price, title, image } = this.props;
@@ -61,7 +82,7 @@ export default class Product extends React.Component {
                       <TouchableHighlight
                         style={styles.kart}
                         onPress={() => {
-                          alert("Kart");
+                          this.addProduct2Kart();
                         }}
                       >
                         <Text
