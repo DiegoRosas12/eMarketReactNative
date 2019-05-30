@@ -7,13 +7,38 @@ export default class LogIn extends React.Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        user_id: 0,
     }
 
-    submit = () => {
-        // Falta hacer el fetch
+    setAsyncId = async (id) => {
+          try {
+            await AsyncStorage.setItem('id', id)
+          } catch(error){
+            console.log(error);
+          }
+        }
 
-    }
+
+    setUser_id = () => {
+        fetch("http://192.168.1.120:3001/productos/AppLogin/"+this.state.username+"/"+this.state.password)
+          .then(response => response.json())
+          .then(user_id => this.setState({user_id}))
+          .then(_alert => {
+
+              if(this.state.user_id === 0){
+                  alert("Usuario o contraseña incorrectos")
+                }
+                else{ 
+                    alert("Bienvenido " + this.state.username + this.state.user_id);
+                    this.setAsyncId(this.state.user_id);
+                } 
+            })
+          .catch(error => {
+            console.error(error);
+          })
+      }
+
     render(){
         return(
             <View>
@@ -22,9 +47,11 @@ export default class LogIn extends React.Component {
                 onChangeText={(username) => this.setState({username})}/>
                 <Text>Contraseña</Text>
                 <TextInput
+                secureTextEntry={true}
                 onChangeText={(password) => this.setState({password})}/>
-                <Button title="Aceptar" color='#00A210' onPress={this.submit} />
+                <Button title="Aceptar" color='#00A210' onPress={this.setUser_id} />
             </View>
+            
         )
     }
 }
