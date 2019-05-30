@@ -11,7 +11,7 @@ export default class PedidosScreen extends React.Component {
 
   state = {
     username : "",
-    id: 0,
+    id: "",
     showLogIn: false,
     showSignIn: false,
   }
@@ -26,7 +26,7 @@ export default class PedidosScreen extends React.Component {
   }
   setTemporalId = async () => {
     try {
-      await AsyncStorage.setItem('id', 1)
+      await AsyncStorage.setItem('id', '1')
       //this.setState({username: 'prueba1'})
     } catch(error){
       console.log(error);
@@ -36,6 +36,7 @@ export default class PedidosScreen extends React.Component {
     this.setTemporalLogin()
     this.setTemporalId()
     this.getLogin();
+    this.getId();
   }
   getLogin = async () => {
     try {
@@ -92,6 +93,7 @@ export default class PedidosScreen extends React.Component {
         <ScrollView style={styles.container} contentContainerStyle={styles.signin}>
           <Text>Perfil</Text>
           <Text>{this.state.username}</Text>
+          <Text>{this.state.id}</Text>
           <Button title="cerrar sesion" color='#00A210'
           onPress={() => {
             this.logout();
