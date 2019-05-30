@@ -12,11 +12,50 @@ export default class Product extends React.Component {
         imagen: "../assets/images/robot-dev.png",
         precio: 0, 
         modal: false,
+        username: ""
     }
+
+    getLogin = async () => {
+      try {
+        const value = await AsyncStorage.getItem('user');
+        if (value !== null) {
+          // We have data!!
+          console.log(value);
+          this.setState({username: value});
+        }
+        return value;
+      } catch (error) {
+        // Error retrieving data
+        console.log(error)
+      }
+      return value
+    }
+  
     
     
     setModalVisible(visible) {
       this.setState({modal: visible});
+    }
+
+    addProduct2Kart(){
+      fetch("http://192.168.1.120:3001/carritos/addCarrito", {
+      method: "POST",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    body: JSON.stringify({
+      producto_id: this.props.producto_id,
+      user_id: 1,
+      cantidad: 1,
+    })
+  })
+  .catch(function(error) {
+    console.log(error.message);
+    throw error;
+  });
+
+      Alert.alert('Carrito', 'Producto añadido');
     }
     
     render (){
@@ -61,7 +100,7 @@ export default class Product extends React.Component {
                       <TouchableHighlight
                         style={styles.kart}
                         onPress={() => {
-                          alert("Kart");
+                          this.addProduct2Kart();
                         }}
                       >
                         <Text

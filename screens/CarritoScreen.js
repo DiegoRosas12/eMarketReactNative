@@ -1,24 +1,66 @@
 import React from 'react';
 import { ExpoConfigView } from '@expo/samples';
-import {View, StyleSheet, Image, Text, ScrollView, Platform, AsyncStorage} from 'react-native';
+import {View, StyleSheet, Image, Text, ScrollView, Platform, AsyncStorage, RefreshControl} from 'react-native';
 import CartItem from '../components/CartItem';
 
 export default class CarritoScreen extends React.Component {
   static navigationOptions = {
     title: 'app.json',
   };
+
+  
+  constructor(props){
+    super(props);
+      this.state ={
+        productos: [],
+        refreshing: false,
+      };
+    this.setProductos();
+  }
+
+  setProductos(){
+    fetch("http://192.168.1.120:3001/carritos/carrito/user1")
+      .then(response => response.json())
+      .then(productos => this.setState({productos}))
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  _onRefresh = () => {
+    this.setState({refreshing: true});
+
+    fetch("http://192.168.1.120:3001/carritos/carrito/user1")
+      .then(response => response.json())
+      .then(productos => this.setState({productos}))
+      .then(() => {
+        this.setState({refreshing: false});
+      })
+      .catch(error => {
+              console.error(error);
+            });
+  }
   
   render() {
-    /* Go ahead and delete ExpoConfigView and replace it with your
-     * content, we just wanted to give you a quick view of your config */
+
     return (
         <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh}
+          />
+        }
+          >
         <View style={styles.cart}/>
-        <CartItem style={styles.cart} title={'ps4'} proveedor={'Sony'} cantidad={1} precio={1800.50}/>
+        {this.state.productos.map(producto => (
+          <CartItem key={producto.producto_id} producto_id={producto.producto_id} user_id ={1} style={styles.cart} title={producto.nombre} proveedor={producto.username} cantidad="" precio={producto.precio} />
+        ))}
+        {/* <CartItem style={styles.cart} title={'ps4'} proveedor={'Sony'} cantidad={1} precio={1800.50}/>
         <CartItem style={styles.cart} title={'Ps4'} proveedor={'Sony'} cantidad={1} precio={1800.50}/>
         <CartItem style={styles.cart} title={'Ps4'} proveedor={'Sony'} cantidad={1} precio={1800.50}/>
-        <CartItem style={styles.cart} title={'Ps4'} proveedor={'Sony'} cantidad={1} precio={1800.50}/>
+        <CartItem style={styles.cart} title={'Ps4'} proveedor={'Sony'} cantidad={1} precio={1800.50}/> */}
         </ScrollView>
         <View style={styles.pagar}>
           <Text style={styles.whiteText}>Pagar</Text>
