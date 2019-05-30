@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View, Modal, Text, AsyncStorage } from 'react-n
 import SignIn from './SignInScreen';
 import LogIn from './LogInScreen';
 import { Button } from 'react-native-elements';
+import MainNavigator from '../navigation/MainNavigator'
 
 export default class PedidosScreen extends React.Component {
   static navigationOptions = {
@@ -87,7 +88,7 @@ export default class PedidosScreen extends React.Component {
     this.setState({ showLogIn: visible})    
   }
   render() {
-
+    const {navigate} = this.props.navigate
     if (this.state.username){
       return(
         <ScrollView style={styles.container} contentContainerStyle={styles.signin}>
@@ -124,7 +125,8 @@ export default class PedidosScreen extends React.Component {
           
           <Button title="iniciar sesion" color='#00A210'
               onPress={() => {
-                this.showLogIn(!this.state.showLogIn);
+                //this.showLogIn(!this.state.showLogIn);
+                
               }}/>
           <Button title="registrase" color='#00A210'
               onPress={() => {
