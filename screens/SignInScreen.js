@@ -20,27 +20,7 @@ export default class SignIn extends React.Component {
       };
       
   }
-  setTemporalLogin = async () => {
-    try {
-      await AsyncStorage.setItem('user', 'prueba')
-    } catch(error){
-      console.log(error);
-    }
-  }
-  getLogin = async () => {
-    try {
-      const value = await AsyncStorage.getItem('user');
-      if (value !== null) {
-        // We have data!!
-        console.log(value);
-        this.setState({username: value});
-      }
-      return value;
-    } catch (error) {
-      // Error retrieving data
-      console.log(error)
-    }
-  }
+  
   submit = () => {
 
   fetch("http://192.168.1.120:3001/authentication/SignUp", {
@@ -69,17 +49,10 @@ export default class SignIn extends React.Component {
 
     alert(`Usuario Creado`);
   }
+
   
   render() {
-    this.setTemporalLogin();
-    if (this.getLogin()){
-      return(
-        <ScrollView style={stylesProfile.box} contentContainerStyle={styles.signin}>
-          <Text>Perfil</Text>
-          <Text>{this.state.username}</Text>
-        </ScrollView>
-      )
-    } else{
+    
       return (
         <ScrollView contentContainerStyle={styles.signin}>
           <Image style={styles.logo} source={require('../assets/images/logo.png')} />
@@ -154,8 +127,8 @@ export default class SignIn extends React.Component {
       );
     }
     
-  }
 }
+
 
 const styles = StyleSheet.create({
 
