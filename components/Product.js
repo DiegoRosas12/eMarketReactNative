@@ -12,7 +12,25 @@ export default class Product extends React.Component {
         imagen: "../assets/images/robot-dev.png",
         precio: 0, 
         modal: false,
+        username: ""
     }
+
+    getLogin = async () => {
+      try {
+        const value = await AsyncStorage.getItem('user');
+        if (value !== null) {
+          // We have data!!
+          console.log(value);
+          this.setState({username: value});
+        }
+        return value;
+      } catch (error) {
+        // Error retrieving data
+        console.log(error)
+      }
+      return value
+    }
+  
     
     
     setModalVisible(visible) {
