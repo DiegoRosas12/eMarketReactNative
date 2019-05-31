@@ -3,7 +3,6 @@ import { ScrollView, StyleSheet, View, Modal, Text, AsyncStorage, Button, TextIn
 import SignIn from './SignInScreen';
 import LogIn from './LogInScreen';
 
-
 export default class PedidosScreen extends React.Component {
   static navigationOptions = {
     title: 'Pedidos',
@@ -303,7 +302,8 @@ export default class PedidosScreen extends React.Component {
           <Text style={{fontSize: 30, marginBottom: 30}}>Entrar a mi cuenta</Text>
           <Button title="iniciar sesion" color='#00A210'
               onPress={() => {
-                this.showLogIn(!this.state.showLogIn);
+                //this.showLogIn(!this.state.showLogIn);
+                
               }}/>
           <Text style={{fontSize: 30, marginBottom: 30, marginTop: 30}}>¿No tienes cuenta?</Text>
           <Button title="regístrate" color='#00A210'
