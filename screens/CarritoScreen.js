@@ -19,7 +19,7 @@ export default class CarritoScreen extends React.Component {
   }
 
   setProductos(){
-    fetch("http://192.168.1.104:3001/carritos/carrito/user1")
+    fetch("http://"+global.localIP+":3001/carritos/carrito/user1")
       .then(response => response.json())
       .then(productos => this.setState({productos}))
       .catch(error => {
@@ -30,7 +30,7 @@ export default class CarritoScreen extends React.Component {
   _onRefresh = () => {
     this.setState({refreshing: true});
 
-    fetch("http://192.168.1.104:3001/carritos/carrito/user1")
+    fetch("http://"+global.localIP+":3001/carritos/carrito/user1")
       .then(response => response.json())
       .then(productos => this.setState({productos}))
       .then(() => {

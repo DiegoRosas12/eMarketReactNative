@@ -58,7 +58,7 @@ export default class Product extends React.Component {
     }
 
     addProduct2Kart(){
-      fetch("http://192.168.1.104:3001/carritos/addCarrito", {
+      fetch("http://"+global.localIP+":3001/carritos/addCarrito", {
       method: "POST",
       headers: {
         Accept: 'application/json',
