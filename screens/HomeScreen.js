@@ -28,7 +28,7 @@ export default class HomeScreen extends React.Component {
   };
 
   setProductos(){
-    fetch("http://192.168.1.120:3001/productos")
+    fetch("http://192.168.1.104:3001/productos")
       .then(response => response.json())
       .then(productos => this.setState({productos}))
       .catch(error => {

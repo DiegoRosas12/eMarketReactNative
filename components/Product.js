@@ -20,28 +20,12 @@ export default class Product extends React.Component {
       this.getId()
     }
 
-    getLogin = async () => {
-      try {
-        const value = await AsyncStorage.getItem('user');
-        if (value !== null) {
-          // We have data!!
-          console.log(value);
-          this.setState({username: value});
-        }
-        return value;
-      } catch (error) {
-        // Error retrieving data
-        console.log(error)
-      }
-      return value
-    }
-  
     getId = async () => {
       try {
         const value = await AsyncStorage.getItem('id');
         if (value !== null) {
           // We have data!!
-          console.log(value);
+          console.log("------> id" + value);
           this.setState({id: value});
         }
         return value;
@@ -58,24 +42,32 @@ export default class Product extends React.Component {
     }
 
     addProduct2Kart(){
-      fetch("http://192.168.1.120:3001/carritos/addCarrito", {
-      method: "POST",
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    body: JSON.stringify({
-      producto_id: this.props.producto_id,
-      user_id: parseInt(this.state.id,10),
-      cantidad: 1,
-    })
-  })
-  .catch(function(error) {
-    console.log(error.message);
-    throw error;
-  });
 
-      Alert.alert('Carrito', 'Producto añadido');
+        this.getId();
+
+      if(this.state.id !== ""){
+        fetch("http://192.168.1.104:3001/carritos/addCarrito", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            producto_id: this.props.producto_id,
+            user_id: this.state.id,
+            // user_id: parseInt(this.state.id,10),
+            cantidad: 1
+          })
+        }).catch(function(error) {
+          console.log(error.message);
+          throw error;
+        });
+        Alert.alert('Carrito', 'Producto añadido');
+      }
+      else{
+        Alert.alert('Ups', 'Necesitas iniciar sesión para comprar'+ this.state.id);
+      }
+
     }
     
     render (){

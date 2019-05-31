@@ -21,7 +21,7 @@ export default class LogIn extends React.Component {
 
 
     setUser_id = () => {
-        fetch("http://192.168.1.120:3001/productos/AppLogin/"+this.state.username+"/"+this.state.password)
+        fetch("http://192.168.1.104:3001/productos/AppLogin/"+this.state.username+"/"+this.state.password)
           .then(response => response.json())
           .then(user_id => this.setState({user_id}))
           .then(_alert => {

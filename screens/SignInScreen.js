@@ -23,7 +23,7 @@ export default class SignIn extends React.Component {
   
   submit = () => {
 
-  fetch("http://192.168.1.120:3001/authentication/SignUp", {
+  fetch("http://192.168.1.104:3001/authentication/SignUp", {
     method: "POST",
     headers: {
       Accept: 'application/json',

@@ -11,7 +11,7 @@ export default class CartItem extends React.Component {
     }
 
     deleteProduct = () =>{
-        fetch("http://192.168.1.120:3001/carritos/deleteProductFromCarrito", {
+        fetch("http://192.168.1.104:3001/carritos/deleteProductFromCarrito", {
         method: "POST",
         headers: {
           Accept: 'application/json',
