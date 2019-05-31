@@ -14,14 +14,12 @@ export default class CarritoScreen extends React.Component {
       this.state ={
         productos: [],
         refreshing: false,
-        id: ""
       };
-    this.getId();
     this.setProductos();
   }
 
   setProductos(){
-    fetch("http://192.168.1.104:3001/carritos/carrito/user"+this.state.id)
+    fetch("http://192.168.1.104:3001/carritos/carrito/user1")
       .then(response => response.json())
       .then(productos => this.setState({productos}))
       .catch(error => {
@@ -32,7 +30,7 @@ export default class CarritoScreen extends React.Component {
   _onRefresh = () => {
     this.setState({refreshing: true});
 
-    fetch("http://192.168.1.104:3001/carritos/carrito/user"+this.state.id)
+    fetch("http://192.168.1.104:3001/carritos/carrito/user1")
       .then(response => response.json())
       .then(productos => this.setState({productos}))
       .then(() => {
@@ -42,23 +40,6 @@ export default class CarritoScreen extends React.Component {
               console.error(error);
             });
   }
-
-  getId = async () => {
-    try {
-      const value = await AsyncStorage.getItem('id');
-      if (value !== null) {
-        // We have data!!
-        console.log(value);
-        this.setState({id: value});
-      }
-      return value;
-    } catch (error) {
-      // Error retrieving data
-      console.log(error)
-    }
-    return value
-  }
-
   
   render() {
 
