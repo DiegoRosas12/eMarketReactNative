@@ -19,29 +19,49 @@ export default class Product extends React.Component {
     componentDidMount(){
       this.getId()
     }
+    addCompra = ( ) => {
+      this.getId();
+      var date = new Date().getDate(); //Current Date
+      var month = new Date().getMonth() + 1; //Current Month
+      var year = new Date().getYear();
+      year += 1900;
+      if(this.state.id !== ""){
+        fetch(
+          "http://" + global.localIP + ":3001/compras/addCompra",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              producto_id: this.props.producto_id,
+              user_id: this.state.id,
+              cantidad: 1,
+              precio_total: this.props.precio,
+              fecha: `${year}-${month}-${date}`
+            })
+          }
+        ).catch(function(error) {
+          console.log(error.message);
+          throw error;
+        });
 
-    getLogin = async () => {
-      try {
-        const value = await AsyncStorage.getItem('user');
-        if (value !== null) {
-          // We have data!!
-          console.log(value);
-          this.setState({username: value});
-        }
-        return value;
-      } catch (error) {
-        // Error retrieving data
-        console.log(error)
+        Alert.alert("Compra", "Compra realizada");
       }
-      return value
+      else{
+        Alert.alert("Baia", "No estas loggeado");
+        
+      }
     }
+    
   
     getId = async () => {
       try {
         const value = await AsyncStorage.getItem('id');
         if (value !== null) {
           // We have data!!
-          console.log(value);
+
           this.setState({id: value});
         }
         return value;
@@ -58,25 +78,35 @@ export default class Product extends React.Component {
     }
 
     addProduct2Kart(){
-      fetch("http://"+global.localIP+":3001/carritos/addCarrito", {
-      method: "POST",
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    body: JSON.stringify({
-      producto_id: this.props.producto_id,
-      user_id: 1,
-      // user_id: parseInt(this.state.id,10),
-      cantidad: 1,
-    })
-  })
-  .catch(function(error) {
-    console.log(error.message);
-    throw error;
-  });
+      this.getId();
 
-      Alert.alert('Carrito', 'Producto añadido');
+      if(this.state.id !== ""){
+        fetch(
+          "http://" + global.localIP + ":3001/carritos/addCarrito",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              producto_id: this.props.producto_id,
+              user_id: this.state.id,
+              // user_id: parseInt(this.state.id,10),
+              cantidad: 1
+            })
+          }
+        ).catch(function(error) {
+          console.log(error.message);
+          throw error;
+        });
+
+        Alert.alert("Carrito", "Producto añadido");
+      }
+      else{
+        Alert.alert("Baia", "No estas loggeado");
+        
+      }
     }
     
     render (){
@@ -133,8 +163,9 @@ export default class Product extends React.Component {
                       <TouchableHighlight
                         style={styles.buy}
                         onPress={() => {
-                          alert("Buy");
+                          this.addCompra();
                         }}
+                       
                       >
                         <Text
                           style={{
@@ -148,15 +179,6 @@ export default class Product extends React.Component {
                       </TouchableHighlight>
                     </View>
                   </View>
-
-                  {/* <TouchableHighlight
-                      onPress={() => {
-                        this.setModalVisible(!this.state.modal);
-                      }}
-                    >
-                      <Text>Hide Modal</Text>
-                    </TouchableHighlight> */}
-                  {/* </View> */}
                 </View>
               </View>
             </Modal> 
@@ -182,7 +204,7 @@ export default class Product extends React.Component {
               title="Comprar"
               color='#00A210'
               onPress={() => {
-                this.getId();
+                this.addCompra();
               }}
             />
           </View>

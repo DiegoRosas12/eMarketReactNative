@@ -25,60 +25,7 @@ export default class PedidosScreen extends React.Component {
     userData: {},
   }
 
-  // setTemporalLogin = async () => {
-  //   try {
-  //     await AsyncStorage.setItem('user', 'prueba')
-  //     //this.setState({username: 'prueba1'})
-  //   } catch(error){
-  //     console.log(error);
-  //   }
-  // }
-  // setTemporalId = async () => {
-  //   try {
-  //     await AsyncStorage.setItem('id', '1')
-  //     //this.setState({username: 'prueba1'})
-  //   } catch(error){
-  //     console.log(error);
-  //   }
-  // }
-  // componentDidMount(){
-  //   // this.setTemporalLogin()
-  //   this.setTemporalId()
-  //   // this.getLogin();
-  //   this.getId();
-  // }
-  // getLogin = async () => {
-  //   try {
-  //     const value = await AsyncStorage.getItem('user');
-  //     if (value !== null) {
-  //       // We have data!!
-  //       console.log(value);
-  //       this.setState({username: value});
-  //     }
-  //     return value;
-  //   } catch (error) {
-  //     // Error retrieving data
-  //     console.log(error)
-  //   }
-  //   return value
-  // }
-
-  getId = async () => {
-    try {
-      const value = await AsyncStorage.getItem('id');
-      if (value !== null) {
-        // We have data!!
-        console.log(value);
-        this.setState({id: value});
-      }
-      return value;
-    } catch (error) {
-      // Error retrieving data
-      console.log(error)
-    }
-    return value
-  }
-
+  
   logout = async () => {
     try {
       await AsyncStorage.setItem('id', '');
@@ -98,7 +45,8 @@ export default class PedidosScreen extends React.Component {
 
   setAsyncId = async (id) => {
     try {
-      await AsyncStorage.setItem('id', id)
+      await AsyncStorage.setItem('id', String(id))
+      const value = await AsyncStorage.getItem('id');
     } catch(error){
       console.log(error);
     }
@@ -405,3 +353,42 @@ const stylesProfile = {
     marginTop: 20,
   }
 }
+
+
+// setTemporalLogin = async () => {
+  //   try {
+  //     await AsyncStorage.setItem('user', 'prueba')
+  //     //this.setState({username: 'prueba1'})
+  //   } catch(error){
+  //     console.log(error);
+  //   }
+  // }
+  // setTemporalId = async () => {
+  //   try {
+  //     await AsyncStorage.setItem('id', '1')
+  //     //this.setState({username: 'prueba1'})
+  //   } catch(error){
+  //     console.log(error);
+  //   }
+  // }
+  // componentDidMount(){
+  //   // this.setTemporalLogin()
+  //   this.setTemporalId()
+  //   // this.getLogin();
+  //   this.getId();
+  // }
+  // getLogin = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem('user');
+  //     if (value !== null) {
+  //       // We have data!!
+  //       console.log(value);
+  //       this.setState({username: value});
+  //     }
+  //     return value;
+  //   } catch (error) {
+  //     // Error retrieving data
+  //     console.log(error)
+  //   }
+  //   return value
+  // }
