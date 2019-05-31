@@ -105,7 +105,9 @@ export default class PedidosScreen extends React.Component {
   }
 
   setUser_id = () => {
-    fetch("http://192.168.1.114:3001/productos/AppLogin/"+this.state.username+"/"+this.state.password)
+    //"+global.localIP+":3001
+
+    fetch("http://"+global.localIP+":3001/productos/AppLogin/"+this.state.username+"/"+this.state.password)
       .then(response => response.json())
       .then(user_id => this.setState({user_id}))
       .then(_alert => {
@@ -127,7 +129,7 @@ export default class PedidosScreen extends React.Component {
 
   submit = () => {
 
-    fetch("http://192.168.1.114:3001/authentication/SignUp", {
+    fetch("http://"+global.localIP+":3001/authentication/SignUp", {
       method: "POST",
       headers: {
         Accept: 'application/json',
@@ -156,7 +158,7 @@ export default class PedidosScreen extends React.Component {
     }
 
     getDataUser = (id) =>{
-      fetch("http://192.168.1.104:3001/productos/getUser/"+id)
+      fetch("http://"+global.localIP+":3001/productos/getUser/"+id)
       .then(response => response.json())
       .then(userData => this.setState({userData}))
       .catch(error => {
