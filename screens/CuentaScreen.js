@@ -116,7 +116,8 @@ export default class PedidosScreen extends React.Component {
             else{ 
                 alert("Bienvenido " + this.state.username + this.state.user_id);
                 this.setAsyncId(this.state.user_id);
-                this.showLogIn(!this.state.showLogIn)
+                this.getDataUser(this.state.user_id);
+                this.showLogIn(!this.state.showLogIn);
             } 
         })
       .catch(error => {
@@ -154,8 +155,8 @@ export default class PedidosScreen extends React.Component {
       alert("Usuario " + this.state.username +  " creado!");
     }
 
-    getDataUser = () => {
-      fetch("http://192.168.1.104:3001/productos/getUser/"+this.state.user_id)
+    getDataUser = (id) =>{
+      fetch("http://192.168.1.104:3001/productos/getUser/"+id)
       .then(response => response.json())
       .then(userData => this.setState({userData}))
       .catch(error => {
@@ -167,7 +168,7 @@ export default class PedidosScreen extends React.Component {
   render() {
 
     if (this.state.user_id){
-      this.getDataUser();
+      
       return(
         <ScrollView style={styles.container} contentContainerStyle={styles.signin}>
           <Image style={styles.profile} source={require('../assets/images/profile.png')} />
@@ -302,7 +303,7 @@ export default class PedidosScreen extends React.Component {
           <Text style={{fontSize: 30, marginBottom: 30}}>Entrar a mi cuenta</Text>
           <Button title="iniciar sesion" color='#00A210'
               onPress={() => {
-                //this.showLogIn(!this.state.showLogIn);
+                this.showLogIn(!this.state.showLogIn);
                 
               }}/>
           <Text style={{fontSize: 30, marginBottom: 30, marginTop: 30}}>¿No tienes cuenta?</Text>
