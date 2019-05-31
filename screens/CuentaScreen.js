@@ -105,7 +105,7 @@ export default class PedidosScreen extends React.Component {
   }
 
   setUser_id = () => {
-    fetch("http://192.168.1.104:3001/productos/AppLogin/"+this.state.username+"/"+this.state.password)
+    fetch("http://192.168.1.114:3001/productos/AppLogin/"+this.state.username+"/"+this.state.password)
       .then(response => response.json())
       .then(user_id => this.setState({user_id}))
       .then(_alert => {
@@ -126,7 +126,7 @@ export default class PedidosScreen extends React.Component {
 
   submit = () => {
 
-    fetch("http://192.168.1.104:3001/authentication/SignUp", {
+    fetch("http://192.168.1.114:3001/authentication/SignUp", {
       method: "POST",
       headers: {
         Accept: 'application/json',
@@ -155,7 +155,7 @@ export default class PedidosScreen extends React.Component {
     }
 
     getDataUser = () => {
-      fetch("http://192.168.1.104:3001/productos/getUser/"+this.state.user_id)
+      fetch("http://192.168.1.114:3001/productos/getUser/"+this.state.user_id)
       .then(response => response.json())
       .then(userData => this.setState({userData}))
       .catch(error => {
@@ -302,7 +302,7 @@ export default class PedidosScreen extends React.Component {
           <Text style={{fontSize: 30, marginBottom: 30}}>Entrar a mi cuenta</Text>
           <Button title="iniciar sesion" color='#00A210'
               onPress={() => {
-                //this.showLogIn(!this.state.showLogIn);
+                this.showLogIn(!this.state.showLogIn);
                 
               }}/>
           <Text style={{fontSize: 30, marginBottom: 30, marginTop: 30}}>¿No tienes cuenta?</Text>
