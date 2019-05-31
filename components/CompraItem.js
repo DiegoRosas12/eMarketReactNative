@@ -16,10 +16,9 @@ export default class CompraItem extends React.Component {
                 <View style={styles.box}>
                     <Text style={styles.title} >{this.props.title}</Text>
                     <Text style={styles.h2} >{this.props.precio}</Text>
-                </View>
-                <View style={styles.priceBox}>
                     <Text style={styles.price} >{this.props.fecha}</Text>
                 </View>
+                
             </View>
         );
     }

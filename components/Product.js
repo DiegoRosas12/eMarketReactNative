@@ -7,18 +7,19 @@ export default class Product extends React.Component {
 
   //Props ---> Producto_id
   //fetch ---> producto_id detail
-    state = {
-        title: "PlayStation 4",
-        imagen: "../assets/images/robot-dev.png",
-        precio: 0, 
-        modal: false,
-        username: "",
-        id: "",
+  state = {
+    title: "PlayStation 4",
+    imagen: "../assets/images/robot-dev.png",
+    precio: 0, 
+    modal: false,
+    username: "",
+    id: "",
+  }
+    constructor(props){
+      super(props);
+      this.getId();
     }
 
-    componentDidMount(){
-      this.getId()
-    }
     addCompra = ( ) => {
       this.getId();
       var date = new Date().getDate(); //Current Date

@@ -16,6 +16,8 @@ export default class CarritoScreen extends React.Component {
         refreshing: false,
         id: "",
       };
+
+    this.getId();
     
   }
 
@@ -26,7 +28,7 @@ export default class CarritoScreen extends React.Component {
       const value = await AsyncStorage.getItem('id');
       if (value !== null) {
         // We have data!!
-        console.log("-----> value kart" + value);
+
         this.setState({id: value});
       }
       return value;

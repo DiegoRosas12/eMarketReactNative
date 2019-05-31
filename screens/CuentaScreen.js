@@ -25,6 +25,12 @@ export default class PedidosScreen extends React.Component {
     userData: {},
   }
 
+  constructor(props){
+    super(props);
+    this.getId();
+    
+  }
+
   
   logout = async () => {
     try {
@@ -51,6 +57,22 @@ export default class PedidosScreen extends React.Component {
       console.log(error);
     }
   }
+
+  getId = async () => {
+    try {
+      const value = await AsyncStorage.getItem('id');
+      if (value !== null) {
+        this.setState({user_id: value});
+      }
+      this.getDataUser(value)
+      return value;
+    } catch (error) {
+      // Error retrieving data
+      console.log(error)
+    }
+    return value
+  }
+
 
   setUser_id = () => {
     //"+global.localIP+":3001
@@ -117,9 +139,10 @@ export default class PedidosScreen extends React.Component {
 
   render() {
 
-    if (this.state.user_id){
+    if (this.state.user_id !== "" && this.state.user_id !== 0){
       
       return(
+        
         <ScrollView style={styles.container} contentContainerStyle={styles.signin}>
           <Image style={styles.profile} source={require('../assets/images/profile.png')} />
           <View style={styles.nameMail}>
