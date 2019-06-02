@@ -40,7 +40,17 @@ export default class LogIn extends React.Component {
         }
 
     setid = () => {
-        fetch("http://"+global.localIP+":3001/productos/AppLogin/"+this.state.username+"/"+this.state.password)
+        fetch("http://"+global.localIP+":3001/productos/AppLogin", {
+          method: "GET",
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: this.state.username,
+            password: this.state.password,
+          })
+        })
           .then(response => response.json())
           .then(id => this.setState({id}))
           .then(_alert => {
@@ -57,6 +67,24 @@ export default class LogIn extends React.Component {
             console.error(error);
           })
       }
+    // setid = () => {
+    //     fetch("http://"+global.localIP+":3001/productos/AppLogin/"+this.state.username+"/"+this.state.password)
+    //       .then(response => response.json())
+    //       .then(id => this.setState({id}))
+    //       .then(_alert => {
+
+    //           if(this.state.id === 0){
+    //               alert("Usuario o contraseña incorrectos")
+    //             }
+    //             else{ 
+    //                 alert("Bienvenido " + this.state.username + this.state.id);
+    //                 this.setAsyncId(this.state.id);
+    //             } 
+    //         })
+    //       .catch(error => {
+    //         console.error(error);
+    //       })
+    //   }
 
     render(){
         return(
