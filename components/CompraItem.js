@@ -15,10 +15,10 @@ export default class CompraItem extends React.Component {
                 <Image style={styles.image} source={require('../assets/images/ps4.png')}/>
                 <View style={styles.box}>
                     <Text style={styles.title} >{this.props.title}</Text>
-                    <Text style={styles.h2} >{this.props.precio}</Text>
+                    <Text style={styles.h2} >${this.props.precio}</Text>
+                    <Text style={styles.price} >Fecha</Text>
                     <Text style={styles.price} >{this.props.fecha}</Text>
                 </View>
-                
             </View>
         );
     }
@@ -28,12 +28,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
-        height: 100,
+        height: 150,
         width: 350,
         backgroundColor: '#fff',
-        borderColor: 'gray',
         borderRadius: 10,
-        borderWidth: 1,
         marginTop: 15,
         marginBottom: 10,
     },

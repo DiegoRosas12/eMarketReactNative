@@ -3,6 +3,7 @@ import {View, StyleSheet, RefreshControl, FlatList, AsyncStorage, TouchableHighl
 import { ExpoLinksView } from '@expo/samples';
 import CompraItem from '../components/CompraItem';
 
+
 export default class ComprasScreen extends React.Component {
   static navigationOptions = {
     title: 'Compras',
@@ -61,14 +62,19 @@ export default class ComprasScreen extends React.Component {
   }
 
   render() {
-
+    // setInterval(() => {
+    //   if(this.state.id === "")
+    //     this.getId();
+    //   console.log("Hola");
+    // }, 
+    // 3000);
     if(this.state.id !== ""){
 
     
     var data =[];
     this.state.compras.map(compra =>(
       data.push({
-        key: compra.compra_id,
+        key: `${compra.compra_id}`,
         username: compra.username,
         nombre: compra.nombre,
         precio: compra.precio,
@@ -77,6 +83,7 @@ export default class ComprasScreen extends React.Component {
     ));
     return (
       <View style={styles.container}>
+
         <FlatList
           data={data}
           refreshControl ={

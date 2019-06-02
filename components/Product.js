@@ -158,7 +158,7 @@ export default class Product extends React.Component {
                         <Text
                           style={{ color: "#07BA00", fontSize: 17 }}
                         >
-                          Add to Kart
+                          Carrito
                         </Text>
                       </TouchableHighlight>
                       <TouchableHighlight
@@ -175,7 +175,7 @@ export default class Product extends React.Component {
                             textAlign: "center"
                           }}
                         >
-                          Buy
+                          Comprar
                         </Text>
                       </TouchableHighlight>
                     </View>
@@ -197,7 +197,7 @@ export default class Product extends React.Component {
                 />
                 <Text>{this.props.nombre}</Text>
                 <Text>$ {this.props.precio}</Text>
-                <Text>Existencia: {this.props.existencia}</Text>
+                {/* <Text>Existencia: {this.props.existencia}</Text> */}
               </View>
             </TouchableHighlight>
 
@@ -227,13 +227,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         margin: 20,
         backgroundColor: '#fff',
-        borderColor: 'gray',
         borderRadius: 10,
-        borderWidth: 1,
         paddingTop: 10,
         paddingBottom: 10,
         paddingRight: 20,
         paddingLeft: 20,
+        width: 175,
     },
     title: {
         color: 'black',
@@ -296,7 +295,7 @@ const styles = StyleSheet.create({
     buy: {
         backgroundColor: '#07BA00',
         padding: 10, 
-        width: 80,
+        width: 110,
         borderRadius: 10
     },
     icon: {

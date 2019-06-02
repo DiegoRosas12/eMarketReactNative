@@ -32,33 +32,44 @@ export default class CartItem extends React.Component {
 
     render (){
         // const {price, title, image } = this.props;
-        return(
-            <View style={styles.container}>
-                <View style={styles.info}>
-                    <Image style={styles.image} source={require('../assets/images/ps4.png')}/>
-                    <View style={styles.box}>
-                        <Text style={styles.title} >{this.props.title}</Text>
-                        <Text style={styles.h2} >Proveedor: {this.props.proveedor}</Text>
-                        <Text style={styles.h2} >$ {this.props.precio}</Text>
-                    </View>
-                </View>
-
-                <Button title="Eliminar" color='#00A210' onPress={this.deleteProduct} />
+        return (
+          <View style={styles.container}>
+            <View style={styles.info}>
+              <Image
+                style={styles.image}
+                source={require("../assets/images/ps4.png")}
+              />
+              <View style={styles.box}>
+                <Text style={styles.title}>{this.props.title}</Text>
+                <Text style={styles.h2}>
+                  {this.props.proveedor}
+                </Text>
+                <Text style={styles.h2}>$ {this.props.precio}</Text>
+              </View>
             </View>
+            <View style={styles.eliminar}>
+              <Button
+                title="Eliminar"
+                color="#00A210"
+                onPress={this.deleteProduct}
+              />
+            </View>
+          </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    eliminar:{
+        padding: 10,
+    },
     container: {
         flex: 1,
         flexDirection: 'column',
-        height: 150,
+        height: 200,
         width: 350,
         backgroundColor: '#fff',
-        borderColor: 'gray',
         borderRadius: 10,
-        borderWidth: 1,
         marginTop: 15,
         marginBottom: 15,
     },

@@ -31,6 +31,7 @@ export default class CarritoScreen extends React.Component {
 
         this.setState({id: value});
       }
+      this.setProductos();
       return value;
     } catch (error) {
       // Error retrieving data
@@ -40,12 +41,15 @@ export default class CarritoScreen extends React.Component {
   }
 
   setProductos(){
-    fetch("http://"+global.localIP+":3001/carritos/carrito/user"+this.state.id)
+    if(this.state.id != "" ){
+
+      fetch("http://"+global.localIP+":3001/carritos/carrito/user"+this.state.id)
       .then(response => response.json())
       .then(productos => this.setState({productos}))
       .catch(error => {
         console.error(error);
       });
+    }
   }
 
   _onRefresh = () => {
