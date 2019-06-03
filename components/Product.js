@@ -28,7 +28,7 @@ export default class Product extends React.Component {
       year += 1900;
       if(this.state.id !== ""){
         fetch(
-          "http://" + global.localIP + ":3001/compras/addCompra",
+          "http://" + global.localIP + ":3001/compras/addCompraApp",
           {
             method: "POST",
             headers: {
