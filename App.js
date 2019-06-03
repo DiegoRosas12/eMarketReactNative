@@ -4,7 +4,7 @@ import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import TopBar from './components/TopBar';
 
-global.localIP = "192.168.1.120"
+global.localIP = "134.209.4.151"
 
 export default class App extends React.Component {
 
